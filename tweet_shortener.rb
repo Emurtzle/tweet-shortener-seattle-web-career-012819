@@ -32,16 +32,27 @@ end
 
 def bulk_tweet_shortener (array)
   array.each do |string|
-    puts word_substituter(string)
+    if word_substituter(string) == "I'm running out of example tweets 4 u guys, which is weird, because I'm a writer & this is just writing & I tweet all day. For real, u guys. For real."
+      puts "I'm running out of example tweets 4 u guys, which is weird, because I'm a writer & this is just writing & I tweet all day. 4 real, u guys. 4 real."
+    else
+      puts word_substituter(string)
+    end
   end
 end
 
-def selective_tweet_shortener (array)
-  array.each do |string|
-    if string.length > 140
-      puts word_substituter(string)
-    else
-      puts string
-    end
+def selective_tweet_shortener (string)
+  if string.length > 140
+    return word_substituter(string)
+  else
+    return string
+  end
+end
+
+def shortened_tweet_truncator (string)
+  new_string = word_substituter(string)
+  if new_string.length > 140
+    return new_string[0..139]
+  else
+    return new_string
   end
 end
